@@ -1,0 +1,120 @@
+C51 COMPILER V9.57.0.0   KEY1                                                              05/09/2020 10:15:00 PAGE 1   
+
+
+C51 COMPILER V9.57.0.0, COMPILATION OF MODULE KEY1
+OBJECT MODULE PLACED IN .\obj\KEY1.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE app\KEY1.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\user;.\app) DEBUG OBJECTEXT
+                    -END PRINT(.\obj\KEY1.lst) TABS(2) OBJECT(.\obj\KEY1.obj)
+
+line level    source
+
+   1          /* Includes ------------------------------------------------------------------*/
+   2          #include <main.h>
+   3          
+   4          /* Private define-------------------------------------------------------------*/
+   5          #define  KEY1_Status  P32
+   6          
+   7          /* Private variables----------------------------------------------------------*/
+   8          
+   9          /* Private function prototypes------------------------------------------------*/
+  10          static void KEY_Detect(void);   //按钮开关检测
+  11          
+  12          /* Public variables-----------------------------------------------------------*/
+  13          //结构体定义
+  14          KEY_t  KEY1 = {FALSE,FALSE,FALSE,FALSE,KEY_Detect};      
+  15          
+  16          /*
+  17            * @name   KEY_Detect
+  18            * @brief  按钮开关检测
+  19            * @param  None
+  20            * @retval None      
+  21          */
+  22          static void KEY_Detect() 
+  23          {
+  24   1        uint8_t i = (uint8_t)0;
+  25   1        
+  26   1        //单击检测
+  27   1        if(KEY1.KEY_Flag == TRUE)
+  28   1        {
+  29   2          KEY1.KEY_Flag = FALSE;
+  30   2          
+  31   2          EX0 = 0; //关中断
+  32   2          
+  33   2          if(KEY1_Status == 0)
+  34   2          {
+  35   3            Public.Delay_ms(2);
+  36   3            if(KEY1_Status == 0)
+  37   3            {
+  38   4              KEY1.Click = TRUE;
+  39   4            }
+  40   3          }
+  41   2        }
+  42   1        //长按检测
+  43   1        if(KEY1.Click == TRUE)
+  44   1        {
+  45   2          KEY1.Press = TRUE;
+  46   2          for(i=0;i<200;i++)
+  47   2          {
+  48   3            Public.Delay_ms(10);
+  49   3            if(KEY1_Status == 1)
+  50   3            {
+  51   4              KEY1.Press = FALSE;
+  52   4              break; //提前跳出for循环
+  53   4            }
+  54   3          }
+C51 COMPILER V9.57.0.0   KEY1                                                              05/09/2020 10:15:00 PAGE 2   
+
+  55   2        }
+  56   1        
+  57   1        ////按键动作
+  58   1        //长按2s以上 -> 指示灯闪一下
+  59   1        //单击       -> 指示灯状态翻转
+  60   1        if(KEY1.Press == TRUE)
+  61   1        {
+  62   2          LED_Run.LED_Flip();
+  63   2          Public.Delay_ms(100);
+  64   2          LED_Run.LED_Flip();
+  65   2        }
+  66   1        else
+  67   1        {
+  68   2          if(KEY1.Click == TRUE)
+  69   2          {
+  70   3            LED_Run.LED_Flip();
+  71   3          } 
+  72   2        }
+  73   1        
+  74   1        KEY1.Press = FALSE; //清除长按标志位
+  75   1        KEY1.Click = FALSE; //清除单击标志位
+  76   1        
+  77   1        EX0 = 1;  //开中断
+  78   1      }
+  79          
+  80          /*
+  81            * @name   INT0_isr
+  82            * @brief  外部中断0服务函数
+  83            * @param  None
+  84            * @retval None      
+  85          */
+  86          void INT0_isr() interrupt  0
+  87          {
+  88   1        KEY1.KEY_Flag = TRUE;
+  89   1        
+  90   1        //LED_Run.LED_Flip();
+  91   1      }
+  92          /********************************************************
+  93            End Of File
+  94          ********************************************************/
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    126    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      7       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,7 @@
+".\obj\main.obj",
+".\obj\public.obj",
+".\obj\Sys_init.obj",
+".\obj\LED.obj",
+".\obj\STA_Machine.obj" 
+TO ".\obj\Project-STC15" 
+PRINT(".\obj\Project-STC15.m51") RAMSIZE(256) 

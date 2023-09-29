@@ -1,0 +1,149 @@
+C51 COMPILER V9.57.0.0   STA_MACHINE                                                       05/09/2020 10:34:38 PAGE 1   
+
+
+C51 COMPILER V9.57.0.0, COMPILATION OF MODULE STA_MACHINE
+OBJECT MODULE PLACED IN .\obj\STA_Machine.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE app\STA_Machine.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\user;.\app) DEBUG OB
+                    -JECTEXTEND PRINT(.\obj\STA_Machine.lst) TABS(2) OBJECT(.\obj\STA_Machine.obj)
+
+line level    source
+
+   1          /* Includes ------------------------------------------------------------------*/
+   2          #include <main.h>
+   3          
+   4          /* Private define-------------------------------------------------------------*/
+   5          
+   6          /* Private variables----------------------------------------------------------*/
+   7          
+   8          /* Private function prototypes------------------------------------------------*/
+   9          static void Fun_STA1(void);
+  10          static void Fun_STA2(void);
+  11          static void Fun_STA3(void);
+  12          static void Fun_STA4(void);
+  13          static void Fun_STA5(void);
+  14          static void Fun_STA6(void);
+  15          static void Fun_STA7(void);
+  16          static void Fun_STA8(void);
+  17          
+  18          /* Public variables-----------------------------------------------------------*/
+  19          //结构体定义    
+  20          STA_Machine_t   STA_Machine = 
+  21          {
+  22            STA1,
+  23            
+  24            Fun_STA1,
+  25            Fun_STA2,
+  26            Fun_STA3,
+  27            Fun_STA4,
+  28            Fun_STA5,
+  29            Fun_STA6,
+  30            Fun_STA7,
+  31            Fun_STA8,
+  32          };
+  33          
+  34          /*
+  35            * @name   Fun_STA1 - 8
+  36            * @brief  状态函数
+  37            * @param  None
+  38            * @retval None      
+  39          */
+  40          void Fun_STA1()
+  41          {
+  42   1        LED_Run.LED_Flip();
+  43   1        Public.Delay_ms(100);
+  44   1        LED_Run.LED_Flip();
+  45   1        Public.Delay_ms(100);
+  46   1        
+  47   1        STA_Machine.ucSTA_Machine_Status = STA2;
+  48   1      }
+  49          
+  50          void Fun_STA2()
+  51          {
+  52   1        LED_Run.LED_Flip();
+  53   1        Public.Delay_ms(200);
+  54   1        LED_Run.LED_Flip();
+C51 COMPILER V9.57.0.0   STA_MACHINE                                                       05/09/2020 10:34:38 PAGE 2   
+
+  55   1        Public.Delay_ms(200);
+  56   1        
+  57   1        STA_Machine.ucSTA_Machine_Status = STA3;
+  58   1      }
+  59          
+  60          void Fun_STA3()
+  61          {
+  62   1        LED_Run.LED_Flip();
+  63   1        Public.Delay_ms(300);
+  64   1        LED_Run.LED_Flip();
+  65   1        Public.Delay_ms(300);
+  66   1        
+  67   1        STA_Machine.ucSTA_Machine_Status = STA4;
+  68   1      }
+  69          
+  70          void Fun_STA4()
+  71          {
+  72   1        LED_Run.LED_Flip();
+  73   1        Public.Delay_ms(400);
+  74   1        LED_Run.LED_Flip();
+  75   1        Public.Delay_ms(400);
+  76   1        
+  77   1        STA_Machine.ucSTA_Machine_Status = STA5;
+  78   1      }
+  79          
+  80          void Fun_STA5()
+  81          {
+  82   1        LED_Run.LED_Flip();
+  83   1        Public.Delay_ms(500);
+  84   1        LED_Run.LED_Flip();
+  85   1        Public.Delay_ms(500);
+  86   1        
+  87   1        STA_Machine.ucSTA_Machine_Status = STA6;
+  88   1      }
+  89          
+  90          void Fun_STA6()
+  91          {
+  92   1        LED_Run.LED_Flip();
+  93   1        Public.Delay_ms(600);
+  94   1        LED_Run.LED_Flip();
+  95   1        Public.Delay_ms(600);
+  96   1        
+  97   1        STA_Machine.ucSTA_Machine_Status = STA7;
+  98   1      }
+  99          
+ 100          void Fun_STA7()
+ 101          {
+ 102   1        LED_Run.LED_Flip();
+ 103   1        Public.Delay_ms(700);
+ 104   1        LED_Run.LED_Flip();
+ 105   1        Public.Delay_ms(700);
+ 106   1        
+ 107   1        STA_Machine.ucSTA_Machine_Status = STA8;
+ 108   1      }
+ 109          
+ 110          void Fun_STA8()
+ 111          {
+ 112   1        LED_Run.LED_Flip();
+ 113   1        Public.Delay_ms(800);
+ 114   1        LED_Run.LED_Flip();
+ 115   1        Public.Delay_ms(800);
+ 116   1        
+C51 COMPILER V9.57.0.0   STA_MACHINE                                                       05/09/2020 10:34:38 PAGE 3   
+
+ 117   1        STA_Machine.ucSTA_Machine_Status = STA1;
+ 118   1      }
+ 119          /********************************************************
+ 120            End Of File
+ 121          ********************************************************/
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    352    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     25    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
